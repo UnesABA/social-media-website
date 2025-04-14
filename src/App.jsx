@@ -1,8 +1,8 @@
-import React from 'react'
+import Login from './pages/login/Login'
 
 const App = () => {
   return (
-    <div>Younes AIT BEN ALI</div>
+    <Login />
   )
 }
 
