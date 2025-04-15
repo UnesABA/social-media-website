@@ -11,6 +11,8 @@ import {
 }               from "react-router-dom"
 import "./index.css"
 
+const currentUser = false
+
 //This is our layout we can use it everywhere
 const Layout = () =>{ 
   return (
@@ -25,12 +27,24 @@ const Layout = () =>{
   )
 }
 
+const ProtectedRoute = ({children}) =>{
+  if(!currentUser){
+    return <Navigate to= "/login" />
+  }
+
+  return children
+}
+
 function App() {
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+            }>
             {/* <Route index element={<Home />} />
             <Route path="profile/:id" element={<Profile />} /> */}
           </Route>
