@@ -1,59 +1,82 @@
-import Login    from "./pages/login/Login"
-import Register from "./pages/register/Register"
-import Navbar   from "./components/navbar/Navbar"
-import LeftBar  from "./components/leftbar/LeftBar"
-import RightBar from "./components/rightbar/RightBar"
+import { useContext } from "react";
 import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
   Outlet,
-}               from "react-router-dom"
-import "./index.css"
+} from "react-router-dom";
 
-const currentUser = false
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
+import Navbar from "./components/navbar/Navbar";
+import LeftBar from "./components/leftBar/LeftBar";
+import RightBar from "./components/rightBar/RightBar";
+import Home from "./pages/home/Home";
+import Profile from "./pages/profile/Profile";
 
-//This is our layout we can use it everywhere
-const Layout = () =>{ 
-  return (
-    <div>
+import { DarkModeContext } from "./context/darkModeContext";
+import { AuthContext } from "./context/authContext";
+
+import "./style.scss";
+
+function App() {
+  const { currentUser } = useContext(AuthContext);
+  const { darkMode } = useContext(DarkModeContext);
+
+  const Layout = () => (
+    <div className={`theme-${darkMode ? "dark" : "light"}`}>
       <Navbar />
-      <div style={{display: "flex"}}>
+      <div style={{ display: "flex" }}>
         <LeftBar />
-        <Outlet />
+        <div style={{ flex: 6 }}>
+          <Outlet />
+        </div>
         <RightBar />
       </div>
     </div>
-  )
+  );
+
+  const ProtectedRoute = ({ children }) => {
+    if (!currentUser) {
+      return <Navigate to="/login" />;
+    }
+    return children;
+  };
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <ProtectedRoute>
+          <Layout />
+        </ProtectedRoute>
+      ),
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/profile/:id",
+          element: <Profile />,
+        },
+      ],
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
+    },
+    {
+      path: "*",
+      element: <Navigate to="/" />,
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
-const ProtectedRoute = ({children}) =>{
-  if(!currentUser){
-    return <Navigate to= "/login" />
-  }
-
-  return children
-}
-
-function App() {
-  return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/" element={
-            <ProtectedRoute>
-              <Layout />
-            </ProtectedRoute>
-            }>
-            {/* <Route index element={<Home />} />
-            <Route path="profile/:id" element={<Profile />} /> */}
-          </Route>
-          <Route path= "/login"    element= {<Login />} />
-          <Route path= "/register" element= {<Register />} />
-        </Routes>
-      </Router>
-    </>
-  )
-}
-
-export default App
+export default App;
