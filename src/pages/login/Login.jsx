@@ -1,5 +1,5 @@
+import { Link } from "react-router-dom"
 import "./login.scss"
-import Link from "react-router-dom"
 
 const Login = () => {
   return (
@@ -11,7 +11,11 @@ const Login = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero cum, alias totam numquam ipsa exercitationem dignissimos, error nam, consequatur.
           </p>
           <span>Don't you have an account ?</span>
-          <button>Register</button>
+
+          <Link to= "/register">
+            <button>Register</button>
+          </Link>
+          
         </div>
         <div className="right">
           <h1>Login</h1>
@@ -19,7 +23,9 @@ const Login = () => {
             <input placeholder= "Username" type="text" />
             <input placeholder= "Password" type="password" />
             <Link to= "/register">
-              <button>Login</button>
+              <button>
+                Login
+              </button>
             </Link>
           </form>
         </div>

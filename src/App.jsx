@@ -1,8 +1,23 @@
-import Login from './pages/login/Login'
+import Login    from "./pages/login/Login"
+import Register from "./pages/register/Register"
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+}               from "react-router-dom";
+import "./index.css"
 
-const App = () => {
+function App() {
+  
   return (
-    <Login />
+    <>
+      <Router>
+        <Routes>
+          <Route path= "/login"    element= {<Login />} />
+          <Route path= "/register" element= {<Register />} />
+        </Routes>
+      </Router>
+    </>
   )
 }
 

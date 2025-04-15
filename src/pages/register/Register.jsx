@@ -11,7 +11,11 @@ const Register = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero cum, alias totam numquam ipsa exercitationem dignissimos, error nam, consequatur.
           </p>
           <span>Do you have an account ?</span>
-          <button>Login</button>
+
+          <Link to= "/login">
+            <button>Login</button>
+          </Link>
+          
         </div>
         <div className="right">
           <h1>register</h1>
@@ -20,9 +24,9 @@ const Register = () => {
             <input placeholder= "email" type="email" />
             <input placeholder= "Password" type="password" />
             <input placeholder= "Name" type="text" />
-            <Link to= "/login">
+
               <button>register</button>
-            </Link>
+
           </form>
         </div>
       </div>
