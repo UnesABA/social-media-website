@@ -1,27 +1,25 @@
-import { useContext } from "react";
+import { useContext }      from "react"
+import Login               from "./pages/login/Login"
+import Register            from "./pages/register/Register"
+import Navbar              from "./components/navbar/Navbar"
+import LeftBar             from "./components/leftBar/LeftBar"
+import RightBar            from "./components/rightBar/RightBar"
+import Home                from "./pages/home/Home"
+import Profile             from "./pages/profile/Profile"
+import { DarkModeContext } from "./context/darkModeContext"
+import { AuthContext }     from "./context/authContext"
 import {
   createBrowserRouter,
   RouterProvider,
   Navigate,
   Outlet,
-} from "react-router-dom";
+}                          from "react-router-dom"
 
-import Login from "./pages/login/Login";
-import Register from "./pages/register/Register";
-import Navbar from "./components/navbar/Navbar";
-import LeftBar from "./components/leftBar/LeftBar";
-import RightBar from "./components/rightBar/RightBar";
-import Home from "./pages/home/Home";
-import Profile from "./pages/profile/Profile";
-
-import { DarkModeContext } from "./context/darkModeContext";
-import { AuthContext } from "./context/authContext";
-
-import "./style.scss";
+import "./style.scss"
 
 function App() {
-  const { currentUser } = useContext(AuthContext);
-  const { darkMode } = useContext(DarkModeContext);
+  const { currentUser } = useContext(AuthContext)
+  const { darkMode }    = useContext(DarkModeContext)
 
   const Layout = () => (
     <div className={`theme-${darkMode ? "dark" : "light"}`}>
@@ -34,14 +32,14 @@ function App() {
         <RightBar />
       </div>
     </div>
-  );
+  )
 
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {
-      return <Navigate to="/login" />;
+      return <Navigate to="/login" />
     }
-    return children;
-  };
+    return children
+  }
 
   const router = createBrowserRouter([
     {
@@ -74,9 +72,9 @@ function App() {
       path: "*",
       element: <Navigate to="/" />,
     },
-  ]);
+  ])
 
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />
 }
 
-export default App;
+export default App

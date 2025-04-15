@@ -1,9 +1,9 @@
-import { useContext } from "react";
-import "./comments.scss";
-import { AuthContext } from "../../context/authContext";
+import { useContext }  from "react"
+import { AuthContext } from "../../context/authContext"
+import "./comments.scss"
 
 const Comments = () => {
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext)
   //Temporary
   const comments = [
     {
@@ -22,7 +22,7 @@ const Comments = () => {
       profilePicture:
         "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1600",
     },
-  ];
+  ]
   return (
     <div className="comments">
       <div className="write">
@@ -41,7 +41,7 @@ const Comments = () => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Comments;
+export default Comments

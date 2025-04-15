@@ -1,9 +1,9 @@
-import "./share.scss";
-import Image from "../../assets/img.png";
-import Map from "../../assets/map.png";
-import Friend from "../../assets/friend.png";
-import { useContext } from "react";
-import { AuthContext } from "../../context/authContext";
+import Image           from "../../assets/img.png"
+import Map             from "../../assets/map.png"
+import Friend          from "../../assets/friend.png"
+import { useContext }  from "react"
+import { AuthContext } from "../../context/authContext"
+import "./share.scss"
 
 const Share = () => {
 
@@ -43,7 +43,7 @@ const Share = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Share;
+export default Share

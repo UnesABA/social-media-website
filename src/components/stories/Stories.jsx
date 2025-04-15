@@ -1,6 +1,6 @@
-import { useContext } from "react";
-import "./stories.scss"
+import { useContext }  from "react";
 import { AuthContext } from "../../context/authContext"
+import "./stories.scss"
 
 const Stories = () => {
 
