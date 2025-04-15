@@ -15,7 +15,7 @@ const Register = () => {
           <Link to= "/login">
             <button>Login</button>
           </Link>
-          
+
         </div>
         <div className="right">
           <h1>register</h1>
@@ -25,7 +25,10 @@ const Register = () => {
             <input placeholder= "Password" type="password" />
             <input placeholder= "Name" type="text" />
 
-              <button>register</button>
+              <button>
+                register
+              </button>
+
 
           </form>
         </div>
