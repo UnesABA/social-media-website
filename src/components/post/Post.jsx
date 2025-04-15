@@ -1,5 +1,5 @@
-import Post from "../post/Post";
-import "./posts.scss";
+import Post from "./Post";
+import "./post.scss";
 
 const Posts = () => {
   //TEMPORARY
